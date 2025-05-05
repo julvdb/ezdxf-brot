@@ -80,7 +80,6 @@ class CADGraphicsView(qw.QGraphicsView):
     def begin_loading(self):
         self._is_loading = True
         self.scene().invalidate(qc.QRectF(), qw.QGraphicsScene.AllLayers)
-        qw.QApplication.processEvents()
 
     def end_loading(self, new_scene: qw.QGraphicsScene):
         self.setScene(new_scene)
