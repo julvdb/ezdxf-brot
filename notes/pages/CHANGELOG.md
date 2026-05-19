@@ -1,4 +1,59 @@
-## Version 1.4.2 - dev
+## Version 1.4.4 - 2026-05-14
+id:: 6a01df82-ea1b-48c4-912f-6a80564d3288
+	- NEW: `ezdxf.entities.textstyle.get_textstyle()` function
+	- CHANGE: replace legacy `pyparsing` names and arguments by PEP8-compliant names
+		- requires `pyparsing >= 3.0.0` released in 2022!
+		- {{issue 1363}}
+	- CHANGE: `MTEXT` float parsing
+		- {{pr 1350}}
+		- contributed by #eXponenta
+	- BUGFIX: transforming a `LINE` entity with an explicit `thickess` of 0 raises `ZeroDivisionError`
+		- {{issue 1344}}
+	- BUGFIX: `BlockRecord.destroy()` accesses uninitialized data in context of the `xref` module using `ConflictPolicy.KEEP`
+		- {{issue 1359}}
+	- BUGFIX: `MLEADER` arrow head rendering
+		- {{pr 1357}}
+		- contributed by #eXponenta
+	- BUGFIX: `MTEXT` rendering takes textstyle width and oblique attributes into account
+		- {{issue 1351}}
+		- contributed by #eXponenta
+	- BUGFIX: Layer linetype patterns are empty when using custom layout properties
+		- {{issue 1368}}
+		- contributed by #enriqueav
+	- BUGFIX: handle loaded `TEXT` and `MTEXT` entities with a height of 0
+		- {{issue 1372}}
+	- BUGFIX: `xref` module now handles empty entities like `Polyline` in blocks correct
+		- {{issue 1377}}
+	- BUGFIX: `Body.copy_data()` copies `_temporary_transformation`
+		- {{issue 1374}}
+	- BUGFIX: decode CIF and MIF encoded strings including lower case characters like `\U+abcd`
+		- {{issue 1380}}
+	- BUGFIX: clipping logic in `UniversalFrontend`
+		- {{pr 1383}}
+		- contrbuted by #origami7
+- ## Version 1.4.3 - 2025-10-19
+  id:: 68d646ab-d400-4b0f-8c2b-33a30ba1ecc5
+	- NEW: added deployment of Python 3.14 packages
+	- CHANGE: requires Python 3.10, Python 3.9 has reached End of Life in October 2025
+	- CHANGE: requires PyPy 3.11, `Pillow` (and maybe other packages) do not release binary wheels for PyPy 3.10 anymore
+	- CHANGE: removed the forced override of `Settings.output_coordinate_space` in the `SVGBacked`
+		- {{issue 1330}}
+	- NEW: Support for exporting elevations by the `geo` add-on
+		- {{pr 1329}}
+		- contributed by #rdesparbes
+	- BUGFIX: fix `target_point` usage in the `VIEWPORT` transformation matrix
+		- {{pr 1319}}
+		- contributed by #eXponenta
+	- BUGFIX: Filter polyline vertices for rendering based on vertex flags
+		- {{issue 1317}}
+		- contributed by #PaulLampe
+	- BUGFIX: draw `ATTRIB` entities of block references at last
+		- {{issue 1321}}
+		- contributed by #eXponenta
+	- BUGFIX: `Trace` rendering
+		- {{issue 1375}}
+- ## Version 1.4.2 - 2025-05-18
+  id:: 68d646ab-6a15-4016-9cc2-feaad2ceb304
 	- CHANGE: faster and smaller PDF export by the `PyMuPDF` backend
 		- Test with 19 CADKIT samples:
 			- the export of PDF is in average 38x faster
